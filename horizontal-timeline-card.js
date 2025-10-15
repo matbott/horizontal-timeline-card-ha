@@ -150,7 +150,7 @@ class HorizontalTimelineCard extends HTMLElement {
   static async getConfigElement() {
     // Necesitamos importar el archivo para asegurarnos de que la clase del editor
     // (horizontal-timeline-card-editor) esté registrada antes de usarla.
-    await import("/hacsfiles/lovelace-horizontal-timeline/horizontal-timeline-card-ha.js");
+    await import("/hacsfiles/horizontal-timeline-card-ha/horizontal-timeline-card.js");
     return document.createElement("horizontal-timeline-card-editor");
   }
 
