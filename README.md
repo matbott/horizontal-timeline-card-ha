@@ -2,7 +2,8 @@
 
 Una tarjeta de Lovelace para Home Assistant que muestra eventos de un calendario en una línea de tiempo horizontal.
 
-![Ejemplo de la Tarjeta](URL_A_TU_IMAGEN_DE_EJEMPLO)  ## Características
+<img width="517" height="227" alt="image" src="https://github.com/user-attachments/assets/bbb459d1-c8c1-42de-8e45-1f262af8e9ed" />
+  ## Características
 
 * Visualiza eventos en un rango de fechas sobre una línea de tiempo horizontal.
 * Personalizable: cambia colores, posición de etiquetas, y más.
