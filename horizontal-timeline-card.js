@@ -1,23 +1,18 @@
 // CLASE DEL EDITOR GRÁFICO
-// Esta es una nueva clase que define cómo se verá el formulario de configuración.
 class HorizontalTimelineCardEditor extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
   }
 
-  // Home Assistant llama a esta función y le pasa la configuración actual
   setConfig(config) {
     this._config = config;
     this.render();
   }
 
-  // Dibuja el formulario
   render() {
     if (!this.shadowRoot) return;
 
-    // Usamos los componentes de Home Assistant (ha-textfield, ha-switch)
-    // para que el formulario se vea igual que el resto de la interfaz.
     this.shadowRoot.innerHTML = `
       <style>
         .row { display: flex; align-items: center; margin-bottom: 12px; }
@@ -78,15 +73,12 @@ class HorizontalTimelineCardEditor extends HTMLElement {
       </div>
     `;
 
-    // Añadimos un "listener" a cada campo del formulario.
-    // Cuando un valor cambia, llamamos a _valueChanged.
     this.shadowRoot.querySelectorAll('ha-textfield, ha-switch, ha-select, ha-entity-picker').forEach(input => {
       input.addEventListener('change', this._valueChanged.bind(this));
-      input.addEventListener('keyup', this._valueChanged.bind(this)); // para textfields
+      input.addEventListener('keyup', this._valueChanged.bind(this));
     });
   }
 
-  // Esta función se activa cuando el usuario cambia algo en el formulario
   _valueChanged(e) {
     if (!this._config || !this._hass) return;
     
@@ -100,7 +92,6 @@ class HorizontalTimelineCardEditor extends HTMLElement {
       newConfig[configValue] = target.value;
     }
 
-    // Creamos y disparamos un evento que Home Assistant escucha
     const event = new CustomEvent("config-changed", {
       detail: { config: newConfig },
       bubbles: true,
@@ -114,14 +105,7 @@ class HorizontalTimelineCardEditor extends HTMLElement {
   }
 }
 
-// Registramos el nuevo elemento del editor
-customElements.define('horizontal-timeline-card-editor', HorizontalTimelineCardEditor);
-
-
-// ---------------------------------------------------------------- //
-// CLASE PRINCIPAL DE LA TARJETA (con las nuevas funciones estáticas) //
-// ---------------------------------------------------------------- //
-
+// CLASE PRINCIPAL DE LA TARJETA
 class HorizontalTimelineCard extends HTMLElement {
   constructor() {
     super();
@@ -146,25 +130,20 @@ class HorizontalTimelineCard extends HTMLElement {
     this.events = [];
   }
 
-  // --- ¡NUEVO! Le dice a HA que tenemos un editor gráfico ---
+  // CAMBIO IMPORTANTE: Ya no importamos el archivo, simplemente retornamos el editor
   static async getConfigElement() {
-    // Necesitamos importar el archivo para asegurarnos de que la clase del editor
-    // (horizontal-timeline-card-editor) esté registrada antes de usarla.
-    await import("/hacsfiles/horizontal-timeline-card-ha/horizontal-timeline-card.js");
     return document.createElement("horizontal-timeline-card-editor");
   }
 
-  // --- ¡NUEVO! Provee una configuración de ejemplo para una tarjeta nueva ---
   static getStubConfig() {
     return {
-      entity: "calendar.cumpleanos", // Un ejemplo
+      entity: "calendar.cumpleanos",
       start_date: new Date().toISOString().slice(0, 10),
       end_date: new Date(new Date().setMonth(new Date().getMonth() + 1)).toISOString().slice(0, 10),
       title: "Mi Línea de Tiempo"
     };
   }
 
-  // El resto del código de la tarjeta (set hass, render, etc.) es el mismo de antes.
   set hass(hass) {
     this._hass = hass;
     if (this.events.length === 0) {
@@ -200,7 +179,6 @@ class HorizontalTimelineCard extends HTMLElement {
   }
 
   _render() {
-    // ... El código de _render no cambia en absoluto ...
     const startDate = new Date(this._config.start_date);
     const endDate = new Date(this._config.end_date);
     const today = new Date();
@@ -254,4 +232,21 @@ class HorizontalTimelineCard extends HTMLElement {
   }
 }
 
-customElements.define('horizontal-timeline-card', HorizontalTimelineCard);
+// REGISTRAR COMPONENTES CON PROTECCIÓN
+if (!customElements.get('horizontal-timeline-card-editor')) {
+  customElements.define('horizontal-timeline-card-editor', HorizontalTimelineCardEditor);
+}
+
+if (!customElements.get('horizontal-timeline-card')) {
+  customElements.define('horizontal-timeline-card', HorizontalTimelineCard);
+}
+
+// Registrar en el registro de cards personalizadas
+window.customCards = window.customCards || [];
+window.customCards.push({
+  type: 'horizontal-timeline-card',
+  name: 'Horizontal Timeline Card',
+  description: 'Tarjeta de línea de tiempo horizontal para calendarios',
+  preview: true,
+  documentationURL: 'https://github.com/tu-usuario/horizontal-timeline-card'
+});
