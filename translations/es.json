@@ -1,0 +1,41 @@
+{
+  "card": {
+    "name": "Tarjeta Línea de Tiempo Horizontal",
+    "description": "Una tarjeta de Lovelace para mostrar eventos de calendario en una línea de tiempo horizontal.",
+    "event_list_title": "Lista de Eventos",
+    "event_count_singular": "evento",
+    "event_count_plural": "eventos"
+  },
+  "editor": {
+    "general": {
+      "title": "Información General",
+      "card_title": "Título",
+      "card_description": "Descripción",
+      "description_placeholder": "Descripción opcional",
+      "entity": "Entidad",
+      "start_date": "Fecha Inicio",
+      "end_date": "Fecha Fin"
+    },
+    "display": {
+      "title": "Opciones de Visualización",
+      "card_height": "Altura Tarjeta",
+      "card_height_placeholder": "auto",
+      "show_names": "Nombres Fijos",
+      "labels_position": "Pos. Etiquetas",
+      "labels_position_top": "Arriba",
+      "labels_position_bottom": "Abajo"
+    },
+    "event_list": {
+      "title": "Lista de Eventos",
+      "show_list": "Mostrar Lista",
+      "list_collapsed": "Lista Colapsada",
+      "auto_color": "Colores Auto"
+    },
+    "colors": {
+      "title": "Colores Personalizados",
+      "line_color": "Color Línea",
+      "dot_color": "Color Puntos",
+      "today_color": "Color Hoy"
+    }
+  }
+}
