@@ -1,0 +1,41 @@
+{
+  "card": {
+    "name": "Horizontal Timeline Card",
+    "description": "A Lovelace card to display calendar events on a horizontal timeline.",
+    "event_list_title": "Event List",
+    "event_count_singular": "event",
+    "event_count_plural": "events"
+  },
+  "editor": {
+    "general": {
+      "title": "General Information",
+      "card_title": "Title",
+      "card_description": "Description",
+      "description_placeholder": "Optional description",
+      "entity": "Entity",
+      "start_date": "Start Date",
+      "end_date": "End Date"
+    },
+    "display": {
+      "title": "Display Options",
+      "card_height": "Card Height",
+      "card_height_placeholder": "auto",
+      "show_names": "Always Show Names",
+      "labels_position": "Labels Position",
+      "labels_position_top": "Top",
+      "labels_position_bottom": "Bottom"
+    },
+    "event_list": {
+      "title": "Event List",
+      "show_list": "Show List",
+      "list_collapsed": "List Collapsed",
+      "auto_color": "Auto-Color Events"
+    },
+    "colors": {
+      "title": "Custom Colors",
+      "line_color": "Line Color",
+      "dot_color": "Dot Color",
+      "today_color": "Today Color"
+    }
+  }
+}
