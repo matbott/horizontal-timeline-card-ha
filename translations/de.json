@@ -1,0 +1,41 @@
+{
+  "card": {
+    "name": "Horizontale tijdlijnkaart",
+    "description": "Een Lovelacekaart om kalenderitems op een horizontale tijdlijn te tonen.", 
+    "event_list_title": "Itemlijst",
+    "event_count_singular": "item",
+    "event_count_plural": "items"
+  },
+  "editor": {
+    "general": {
+      "title": "Algemene informatie",
+      "card_title": "Titel",
+      "card_description": "Omschrijving",
+      "description_placeholder": "Optionele omschrijving",
+      "entity": "Entiteit",
+      "start_date": "Startdatum",
+      "end_date": "Einddatum"
+    },
+    "display": {
+      "title": "Weergave-opties",
+      "card_height": "Hoogte kaart",
+      "card_height_placeholder": "auto",
+      "show_names": "Namen altijd tonen",
+      "labels_position": "Positie labels",
+      "labels_position_top": "Boven",
+      "labels_position_bottom": "Onder"
+    },
+    "event_list": {
+      "title": "Itemlijst",
+      "show_list": "Toon lijst",
+      "list_collapsed": "Ingeklapte lijst",
+      "auto_color": "Auto-kleur items"
+    },
+    "colors": {
+      "title": "Aangepaste kleuren",
+      "line_color": "Kleur lijn",
+      "dot_color": "Kleur stippellijn",
+      "today_color": "Kleur vandaag"
+    }
+  }
+}
